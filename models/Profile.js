@@ -54,14 +54,14 @@ const ProfileSchema = new Schema({
       type: Date
     },
     current: {
-      type: Boolena,
+      type: Boolean,
       default: false
     },
     description: {
       type: String
     }
   }, ],
-  experience: [{
+  education: [{
     school: {
       type: String,
       required: true,
@@ -82,7 +82,7 @@ const ProfileSchema = new Schema({
       type: Date
     },
     current: {
-      type: Boolena,
+      type: Boolean,
       default: false
     },
     description: {
