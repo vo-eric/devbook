@@ -69,8 +69,8 @@ router.delete('/:id', passport.authenticate('jwt', {
     });
 });
 
-// @route     GET api/posts
-// @desc      Create post route
+// @route     POST api/posts
+// @desc      Create a post
 // @access    Private
 router.post('/', passport.authenticate('jwt', {
   session: false
@@ -152,6 +152,64 @@ router.post('/unlike/:id', passport.authenticate('jwt', {
     })
     .catch(err => res.status(404).json({
       postnotfoud: 'No post was found'
+    }))
+});
+
+// @route     POST api/posts/comment/:id
+// @desc      Add a comment to a post
+// @access    Private
+router.post('/comment/:id', passport.authenticate('jwt', {
+  session: false
+}), (req, res) => {
+  const {
+    errors,
+    isValid
+  } = validatePostInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  Post.findById(req.params.id)
+    .then(post => {
+      const comment = {
+        text: req.body.text,
+        name: req.body.name,
+        avatar: req.body.avatar,
+        user: req.user.id
+      }
+
+      post.comments.unshift(comment);
+      post.save().then(post => res.json(post));
+    })
+    .catch(err => res.status(404).json({
+      postnotfoud: 'No post was found'
+    }))
+});
+
+// @route     DELETE api/posts/comment/:id/:comment_id
+// @desc      Delete a comment from a post
+// @access    Private
+router.delete('/comment/:id/:comment_id', passport.authenticate('jwt', {
+  session: false
+}), (req, res) => {
+  Post.findById(req.params.id)
+    .then(post => {
+      if (post.comments.filter(comment => comment._id.toString() === req.params.comment_id).length === 0) {
+        return res.status(404).json({
+          commentdoesnotexist: 'Comment does not exist'
+        })
+      }
+
+      const removeIdx = post.comments
+        .map(item => item._id.toString())
+        .indexOf(req.params.comment_id);
+
+      post.comments.splice(removeIdx, 1);
+      post.save().then(post => res.json(post));
+    })
+    .catch(err => res.status(404).json({
+      postnotfound: 'No post was found'
     }))
 });
 
