@@ -1,5 +1,5 @@
 import React from "react";
 
 export default () => {
-  return <div class="loader" />;
+  return <div className="loader" />;
 };
