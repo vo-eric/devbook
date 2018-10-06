@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import TextFieldGroup from "../common/TextFieldGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import InputGroup from "../common/InputGroup";
 import SelectListGroup from "../common/SelectListGroup";
+import { createProfile } from "../../actions/profileActions";
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -30,9 +32,29 @@ class CreateProfile extends Component {
     this.onChange = this.onChange.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
   onSubmit(e) {
     e.preventDefault();
-    console.log("submitted");
+    const profileData = {
+      handle: this.state.handle,
+      company: this.state.company,
+      website: this.state.website,
+      location: this.state.location,
+      status: this.state.status,
+      skills: this.state.skills,
+      github: this.state.github,
+      twitter: this.state.twitter,
+      facebook: this.state.facebook,
+      instagram: this.state.instagram,
+      linkedin: this.state.linkedin
+    };
+
+    this.props.createProfile(profileData, this.props.history);
   }
 
   onChange(e) {
@@ -91,12 +113,12 @@ class CreateProfile extends Component {
         value: 0
       },
       {
-        label: "Developer",
-        value: "Developer"
-      },
-      {
         label: "Junior Developer",
         value: "Junior Developer"
+      },
+      {
+        label: "Developer",
+        value: "Developer"
       },
       {
         label: "Senior Developer",
@@ -117,6 +139,10 @@ class CreateProfile extends Component {
       {
         label: "Intern",
         value: "Intern"
+      },
+      {
+        label: "Job Seeker",
+        value: "Job Seeker"
       },
       {
         label: "Other",
@@ -211,6 +237,7 @@ class CreateProfile extends Component {
 
                 <div className="mb-3">
                   <button
+                    type="button"
                     onClick={() => {
                       this.setState(previousState => ({
                         displaySocial: !previousState.displaySocial
@@ -247,4 +274,7 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps)(CreateProfile);
+export default connect(
+  mapStateToProps,
+  { createProfile }
+)(withRouter(CreateProfile));
