@@ -1,54 +1,58 @@
-const Validator = require('validator');
-const isEmpty = require('./isEmpty');
+const Validator = require("validator");
+const isEmpty = require("./isEmpty");
 
 module.exports = function validateRegisterInput(data) {
   let errors = {};
 
-  data.name = !isEmpty(data.name) ? data.name : '';
-  data.email = !isEmpty(data.email) ? data.email : '';
-  data.password = !isEmpty(data.password) ? data.password : '';
-  data.password2 = !isEmpty(data.password2) ? data.password2 : '';
+  data.name = !isEmpty(data.name) ? data.name : "";
+  data.email = !isEmpty(data.email) ? data.email : "";
+  data.password = !isEmpty(data.password) ? data.password : "";
+  data.password2 = !isEmpty(data.password2) ? data.password2 : "";
 
-  if (!Validator.isLength(data.name, {
+  if (
+    !Validator.isLength(data.name, {
       min: 2,
       max: 24
-    })) {
-    errors.name = 'Name must be between 2 to 24 characters'
+    })
+  ) {
+    errors.name = "Name must be between 2 to 24 characters";
   }
 
   if (Validator.isEmpty(data.name)) {
-    errors.name = 'Name is required';
-  }
-
-  if (Validator.isEmpty(data.email)) {
-    errors.email = 'Email is required';
+    errors.name = "Name is required";
   }
 
   if (!Validator.isEmail(data.email)) {
-    errors.email = 'Invalid email';
+    errors.email = "Invalid email";
+  }
+
+  if (Validator.isEmpty(data.email)) {
+    errors.email = "Email is required";
   }
 
   if (Validator.isEmpty(data.password)) {
-    errors.password = 'Password is required';
+    errors.password = "Password is required";
   }
 
-  if (!Validator.isLength(data.password, {
+  if (
+    !Validator.isLength(data.password, {
       min: 6,
       max: 30
-    })) {
-    errors.password = 'Password must be between 6 to 30 characters';
+    })
+  ) {
+    errors.password = "Password must be between 6 to 30 characters";
   }
 
   if (Validator.isEmpty(data.password2)) {
-    errors.password2 = 'Confrim password is required';
+    errors.password2 = "Confrim password is required";
   }
 
   if (!Validator.equals(data.password, data.password2)) {
-    errors.password2 = 'Passwords must match';
+    errors.password2 = "Passwords must match";
   }
 
   return {
     errors,
     isValid: isEmpty(errors)
-  }
-}
+  };
+};
