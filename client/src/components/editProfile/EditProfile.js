@@ -48,7 +48,9 @@ class CreateProfile extends Component {
       profile.github = !isEmpty(profile.github) ? profile.github : "";
       profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
       profile.social = !isEmpty(profile.social) ? profile.social : {};
-      profile.twitter = !isEmpty(profile.social.twitter) ? profile.social : "";
+      profile.twitter = !isEmpty(profile.social.twitter)
+        ? profile.social.twitter
+        : "";
       profile.facebook = !isEmpty(profile.social.facebook)
         ? profile.social
         : "";
@@ -65,7 +67,7 @@ class CreateProfile extends Component {
         website: profile.website,
         location: profile.location,
         status: profile.status,
-        skills: profile.skills,
+        skills: skillsCSV,
         github: profile.github,
         bio: profile.bio,
         twitter: profile.twitter,
@@ -88,6 +90,7 @@ class CreateProfile extends Component {
       website: this.state.website,
       location: this.state.location,
       status: this.state.status,
+      bio: this.state.bio,
       skills: this.state.skills,
       github: this.state.github,
       twitter: this.state.twitter,
@@ -204,6 +207,7 @@ class CreateProfile extends Component {
                 <TextFieldGroup
                   placeholder="* Profile Handle"
                   name="handle"
+                  type="string"
                   value={this.state.handle}
                   onChange={this.onChange}
                   error={errors.handle}
@@ -223,6 +227,7 @@ class CreateProfile extends Component {
                 <TextFieldGroup
                   placeholder="Company"
                   name="company"
+                  type="string"
                   value={this.state.company}
                   onChange={this.onChange}
                   error={errors.company}
@@ -232,6 +237,7 @@ class CreateProfile extends Component {
                 <TextFieldGroup
                   placeholder="Website"
                   name="website"
+                  type="string"
                   value={this.state.website}
                   onChange={this.onChange}
                   error={errors.website}
@@ -241,6 +247,7 @@ class CreateProfile extends Component {
                 <TextFieldGroup
                   placeholder="Location"
                   name="location"
+                  type="string"
                   value={this.state.location}
                   onChange={this.onChange}
                   error={errors.location}
@@ -250,6 +257,7 @@ class CreateProfile extends Component {
                 <TextFieldGroup
                   placeholder="* Skills"
                   name="skills"
+                  type="string"
                   value={this.state.skills}
                   onChange={this.onChange}
                   error={errors.skills}
@@ -259,6 +267,7 @@ class CreateProfile extends Component {
                 <TextFieldGroup
                   placeholder="Github"
                   name="github"
+                  type="string"
                   value={this.state.github}
                   onChange={this.onChange}
                   error={errors.github}
