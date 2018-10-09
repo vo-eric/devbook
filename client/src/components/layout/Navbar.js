@@ -23,6 +23,7 @@ class Navbar extends Component {
           </Link>
         </li>
         <li className="nav-item">
+          {/* eslint-disable-next-line */}
           <a href="" onClick={this.onClick.bind(this)} className="nav-link">
             <img
               src={user.avatar}
