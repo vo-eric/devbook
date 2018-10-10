@@ -10,7 +10,7 @@ import SelectListGroup from "../common/SelectListGroup";
 import { createProfile, getCurrentProfile } from "../../actions/profileActions";
 import isEmpty from "../../validation/isEmpty";
 
-class CreateProfile extends Component {
+class EditProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,13 +52,13 @@ class CreateProfile extends Component {
         ? profile.social.twitter
         : "";
       profile.facebook = !isEmpty(profile.social.facebook)
-        ? profile.social
+        ? profile.social.facebook
         : "";
       profile.linkedin = !isEmpty(profile.social.linkedin)
-        ? profile.social
+        ? profile.social.linkedin
         : "";
       profile.instagram = !isEmpty(profile.social.instagram)
-        ? profile.social
+        ? profile.social.instagram
         : "";
 
       this.setState({
@@ -315,7 +315,7 @@ class CreateProfile extends Component {
   }
 }
 
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
@@ -333,4 +333,4 @@ export default connect(
     createProfile,
     getCurrentProfile
   }
-)(withRouter(CreateProfile));
+)(withRouter(EditProfile));
