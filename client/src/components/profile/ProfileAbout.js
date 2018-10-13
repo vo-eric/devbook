@@ -13,13 +13,13 @@ class ProfileAbout extends Component {
     ));
 
     return (
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card card-body bg-light mb-3">
-            <h3 class="text-center text-info">
+      <div className="row">
+        <div className="col-md-12">
+          <div className="card card-body bg-light mb-3">
+            <h3 className="text-center text-info">
               <u>About {profile.user.name}</u>
             </h3>
-            <p class="lead">
+            <p className="lead">
               {isEmpty(profile.bio) ? (
                 <span>{fname} has not added their bio yet.</span>
               ) : (
@@ -27,11 +27,11 @@ class ProfileAbout extends Component {
               )}
             </p>
             <hr />
-            <h3 class="text-center text-info">
+            <h3 className="text-center text-info">
               <u>Languages and Frameworks</u>
             </h3>
-            <div class="row">
-              <div class="d-flex flex-wrap justify-content-center align-items-center">
+            <div className="row">
+              <div className="d-flex flex-wrap justify-content-center align-items-center">
                 {skills}
               </div>
             </div>
