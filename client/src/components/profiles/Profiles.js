@@ -45,7 +45,7 @@ class Profiles extends Component {
 }
 
 Profiles.propTypes = {
-  getProfile: PropTypes.func.isRequired,
+  getProfiles: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 };
 
