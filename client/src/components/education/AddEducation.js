@@ -14,6 +14,7 @@ class AddEducation extends Component {
       school: "",
       degree: "",
       field: "",
+      minor: "",
       from: "",
       to: "",
       current: false,
@@ -38,6 +39,7 @@ class AddEducation extends Component {
       school: this.state.school,
       degree: this.state.degree,
       field: this.state.field,
+      minor: this.state.minor,
       from: this.state.from,
       to: this.state.to,
       current: this.state.current,
@@ -80,7 +82,7 @@ class AddEducation extends Component {
                   error={errors.school}
                 />
                 <TextFieldGroup
-                  placeholder="* Degree (BS, MS, etc)"
+                  placeholder="Degree (BS, MS, etc)"
                   name="degree"
                   value={this.state.degree}
                   type="string"
@@ -94,6 +96,14 @@ class AddEducation extends Component {
                   type="string"
                   onChange={this.onChange}
                   error={errors.field}
+                />
+                <TextFieldGroup
+                  placeholder="Minor"
+                  name="minor"
+                  value={this.state.minor}
+                  type="string"
+                  onChange={this.onChange}
+                  error={errors.minor}
                 />
                 <h6>* From</h6>
                 <TextFieldGroup

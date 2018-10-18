@@ -7,15 +7,6 @@ const Post = require("../../models/Post");
 const Profile = require("../../models/Profile");
 const validatePostInput = require("../../validation/post");
 
-// @route     GET api/posts/test
-// @desc      Tests posts route
-// @access    Private
-router.get("/test", (req, res) => {
-  res.json({
-    msg: "Posts is working!"
-  });
-});
-
 // @route     GET api/posts/
 // @desc      Get posts
 // @access    Public

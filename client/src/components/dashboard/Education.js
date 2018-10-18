@@ -17,12 +17,13 @@ class Education extends Component {
         <td>{education.school}</td>
         <td>{education.degree}</td>
         <td>{education.field}</td>
+        <td>{education.minor}</td>
         <td>
-          <Moment format="YYYY/MM/DD">{education.from}</Moment> -
+          <Moment format=" MMM YYYY">{education.from}</Moment> -
           {education.to === null ? (
             " Now"
           ) : (
-            <Moment format="YYYY/MM/DD">{education.to}</Moment>
+            <Moment format=" MMM YYYY">{education.to}</Moment>
           )}
         </td>
         <td>
@@ -44,7 +45,8 @@ class Education extends Component {
               <th>School</th>
               <th>Degree</th>
               <th>Field</th>
-              <th>Years</th>
+              <th>Minor</th>
+              <th>Duration</th>
               <th />
             </tr>
             {education}

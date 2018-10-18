@@ -23,11 +23,6 @@ class Navbar extends Component {
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/dashboard">
-            Dashboard
-          </Link>
-        </li>
-        <li className="nav-item">
           {/* eslint-disable-next-line */}
           <a href="" onClick={this.onClick.bind(this)} className="nav-link">
             <img

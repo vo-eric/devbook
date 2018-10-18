@@ -12,15 +12,6 @@ const keys = require("../../config/keys");
 
 const router = express.Router();
 
-// @route     GET api/profile/test
-// @desc      Tests prpfile route
-// @access    Public
-router.get("/test", (req, res) => {
-  res.json({
-    msg: "Profiles is working!"
-  });
-});
-
 // @route     GET api/profile
 // @desc      Get current user's profile
 // @access    Private
@@ -233,6 +224,8 @@ router.post(
         school: req.body.school,
         degree: req.body.degree,
         field: req.body.field,
+        minor: req.body.minor,
+        minor: req.body.minor,
         from: req.body.from,
         to: req.body.to,
         current: req.body.current,

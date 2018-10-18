@@ -35,14 +35,11 @@ class PostItem extends Component {
       <div className="card card-body mb-3">
         <div className="row">
           <div className="col-md-2">
-            <a href="profile.html">
-              <img
-                className="rounded-circle d-none d-md-block"
-                src={post.avatar}
-                alt={post.name}
-              />
-            </a>
-            <br />
+            <img
+              className="rounded-circle d-none d-md-block mb-2"
+              src={post.avatar}
+              alt={post.name}
+            />
             <p className="text-center">{post.name}</p>
           </div>
           <div className="col-md-10">

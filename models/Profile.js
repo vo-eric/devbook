@@ -70,12 +70,14 @@ const ProfileSchema = new Schema({
         required: true
       },
       degree: {
-        type: String,
-        required: true
+        type: String
       },
       field: {
         type: String,
         required: true
+      },
+      minor: {
+        type: String
       },
       from: {
         type: Date,
